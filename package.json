@@ -1,0 +1,86 @@
+{
+  "name": "autographa-mt",
+  "version": "1.0.0",
+  "description": "An RCL for the machine translation mode inside the Autographa application.",
+  "author": "Bridgeconn",
+  "license": "MIT",
+  "repository": "https://github.com/Bridgeconn/autographa-mt.git",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "build": "react-scripts build",
+    "prepublishOnly": "rm -fr ./dist & babel ./src --out-dir ./dist -s inline",
+    "predeploy": "yarn styleguide:build",
+    "deploy": "gh-pages -d styleguide",
+    "postpublish": "yarn deploy",
+    "start": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "nyc:report": "nyc report --reporter=json-summary --reporter=text",
+    "test": "start-test 6060 cypress:run && npm run nyc:report",
+    "create-coverage-badge": "bash scripts/create-badge-json.sh",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.21.1",
+    "cypress": "^7.3.0",
+    "dog-names": "^2.0.0",
+    "lodash": "^4.17.15",
+    "mui-datatables": "^3.7.7",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dom": "^17.0.2",
+    "react-select": "^4.3.1",
+    "react-select-async-paginate": "^0.5.3",
+    "react-styleguidist": "^11.1.6",
+    "react-to-print": "^2.12.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@cypress/code-coverage": "^1.10.2",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-istanbul": "^5.2.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.23.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "file-loader": "^4.2.0",
+    "husky": "^6.0.0",
+    "istanbul-lib-coverage": "^2.0.5",
+    "lint-staged": "^11.0.0",
+    "nyc": "^14.1.1",
+    "prettier": "^2.3.0",
+    "start-server-and-test": "^1.10.6",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "main": "dist/index.js",
+  "files": [
+    "dist/*"
+  ],
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
+}
